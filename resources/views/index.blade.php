@@ -1,7 +1,13 @@
-<div>
-    hello its blade template
-</div>
+@extends('layouts.app')
 
-<div>
+@section('title', 'Task list')
 
-</div>
+@section('content')
+    @forelse($tasks as $task)
+        <div>
+            <a href="{{route('tasks.show', ['id'=> $task->id])}}">{{$task->title}}</a>
+        </div>
+    @empty
+        <div>there no tasks</div>
+    @endforelse
+@endsection
